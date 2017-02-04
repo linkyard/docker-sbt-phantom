@@ -12,3 +12,10 @@ RUN wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_JS_
     rm phantomjs.tar.bz2 && \
     mv phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64 phantomjs && \
     ln -sf /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin
+
+#Run sbt once to initialize it along with commonly used dependencies
+# = We trade a bigger image size against faster builds
+COPY init_deps /tmp/init
+RUN cd /tmp/init && \
+    sbt test && \
+    rm -rf /tmp/init
