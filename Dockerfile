@@ -1,4 +1,4 @@
-FROM linkyard/docker-sbt:13.13-8u111
+FROM linkyard/docker-sbt:13.15-8u121
 
 RUN apt-get update && \
     apt-get install -y build-essential chrpath libssl-dev libxft-dev && \
